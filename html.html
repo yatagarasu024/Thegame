@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Game</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        #maze {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            background-color: #000;
+            border: 2px solid #fff;
+        }
+
+        #player {
+            position: absolute;
+            top: 40px;
+            left: 200px;
+            font-size: 20px;
+        }
+
+        #controls {
+            margin-top: 20px;
+        }
+
+        button {
+            font-size: 20px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="maze">
+        <div id="player">😊</div>
+    </div>
+    <div id="controls">
+        <button id="up">⬆️</button><br>
+        <button id="left">⬅️</button>
+        <button id="down">⬇️</button>
+        <button id="right">➡️</button>
+    </div>
+    <script>
+        const player = document.getElementById('player');
+
+        let position = { top: 40, left: 200 };
+
+        document.getElementById('up').onclick = () => move('up');
+        document.getElementById('down').onclick = () => move('down');
+        document.getElementById('left').onclick = () => move('left');
+        document.getElementById('right').onclick = () => move('right');
+
+        function move(direction) {
+            switch (direction) {
+                case 'up':
+                    position.top -= 10;
+                    break;
+                case 'down':
+                    position.top += 10;
+                    break;
+                case 'left':
+                    position.left -= 10;
+                    break;
+                case 'right':
+                    position.left += 10;
+                    break;
+            }
+            updatePosition();
+        }
+
+        function updatePosition() {
+            player.style.top = `${position.top}px`;
+            player.style.left = `${position.left}px`;
+        }
+    </script>
+</body>
+</html>
